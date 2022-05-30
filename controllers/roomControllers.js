@@ -87,4 +87,29 @@ const updateRoom = async (req, res) => {
 	}
 };
 
-export { allRooms, newRoom, getSingleRoom, updateRoom };
+// Delete the room   =>   /api/rooms/:id
+const deleteRoom = async (req, res) => {
+	try {
+		const room = await Room.findById(req.query.id);
+
+		if (!room) {
+			return res.status(404).json({
+				success: false,
+				error: 'Room not found with this ID',
+			});
+		}
+
+		await room.remove();
+		res.status(200).json({
+			success: true,
+			message: 'Room was deleted',
+		});
+	} catch (error) {
+		res.status(400).json({
+			success: false,
+			error: error.message,
+		});
+	}
+};
+
+export { allRooms, newRoom, getSingleRoom, updateRoom, deleteRoom };
