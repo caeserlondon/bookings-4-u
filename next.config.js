@@ -1,5 +1,6 @@
 module.exports = {
 	env: {
-		DB_LOCAL_URI: 'mongodb://127.0.0.1/bookings-4-u',
+		DB_ATLAS_URI:
+			'mongodb+srv://caeserlondon:caeserlondon@bookings-4-you.bqrds.mongodb.net/?retryWrites=true&w=majority',
 	},
 };
